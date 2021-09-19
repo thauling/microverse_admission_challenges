@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1> just checking that the server works </h1>
+<script>
+
+/*
+function solveMeFirst(a, b) {
+  // Hint: Type return a+b below
+    return a + b;
+}
+
+
+
+ * Complete the 'gradingStudents' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY grades as parameter.
+ 
+
+function gradingStudents(grades) {
+    // Write your code here
+    let outar = [];
+    //let roundednum;
+    
+    for (let i=0; i < grades.length; i++){
+        if (grades[i] < 40 && (40 - grades[i]) >= 3){
+            outar.push(grades[i]);
+        }else if (grades[i] < 40 && (40 - grades[i]) < 3){
+            outar.push(40);
+        }else if (grades[i] >= 40 && ((Math.ceil(grades[i]/5)*5) - grades[i]) < 3){ 
+           outar.push((Math.ceil(grades[i]/5)*5));
+        }else if (grades[i] >= 40 && ((Math.ceil(grades[i]/5)*5) - grades[i]) >= 3){
+            outar.push(grades[i]); 
+        };
+   
+    };
+    return outar; 
+    };
+
+//let output = gradingStudents([38,33,55,51]);
+//console.log(output);
+
+
+function sockMerchant(n, ar) {
+    // Write your code here
+    //get all same numbers
+    // 
+    //let pairs = [];
+    let all = [];
+    let resultar = [];
+    
+
+    const counts = {};
+    ar.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+   
+    for (const prop in counts) {
+  
+    all.push(counts[prop]);
+    };
+    console.log(all);
+
+    for (const element of all) {
+
+        console.log(element);
+        if(element % 2 == 0) {
+            resultar.push(element);
+        }else if (element % 2 != 0) {
+            resultar.push((element-1));
+        }; 
+    };
+
+
+    return (resultar.reduce((a, b) => a + b, 0) / 2);
+
+};
+
+
+myar= [11,11,22,22,33,33,33];
+myn = myar.length;
+//console.log(myn);
+let out2 = sockMerchant(myn, myar);
+console.log(out2);
+
+*/
+
+
+function countingValleys(steps, path) {
+    // Write your code here
+    //8
+    //UDDDUDUU
+    //returns the number of valleys traversed
+    // needs TWO zero points to increment 'valley counter'
+    // two adjacant values are always different (i,i+1 | i,i-1)
+    // enter valley IF currentValue = 0, nextPos = -1 ; exit valley IF currentValue = 0, prevPos = 1
+    // return valley crossing for PAIRS if zero
+    const numPath = [];
+    const hashTable = new Map();
+    let currentVal = 0 ;
+    let nextPos;
+    let counter = 0;
+
+        hashTable.set('U', 1);
+        hashTable.set('D', -1);
+/*
+    for (const e of path) {
+        //console.log(e, hashTable.get(e));
+        numPath.push(hashTable.get(e));
+    };
+*/
+
+    for (let i = 0; i < path.length; i++) {
+        //console.log(i, hashTable.get(path[i]));
+
+        numPath.push(hashTable.get(path[i]));
+    };
+
+
+
+    for (let i=0; i < numPath.length; i++) {
+        currentVal += numPath[i];
+        nextPos = numPath[i+1];
+        //console.log(`currentVal: ${currentVal}, nextPos: ${nextPos}`);
+        if ((currentVal == -1) && (nextPos == 1)) { 
+            counter++;
+        };
+  
+    };
+    
+    return counter;
+};
+
+// ACCEPTED!!
+
+
+
+//passed most but termianted due to timeout.
+
+let pa = "DUUUU"; // 1
+let pb = "UDDUUUU"; // 1
+let pc = "UUDDUUDD"; // 0
+let pd = "UDDUUDDU"; // 2
+
+//mysteps = mypath.length;
+//console.log(`${mysteps} ${mypath.length}`);
+
+//const mypathes = [pa, pb, pc, pd];
+const mypathes = [pa, pb, pc, pd];
+let mypath = [];
+for (mypath of mypathes){               // use 'of' to iterate over the actual OBJECTs "DUU..", use 'in' to iterate over their INDICES 
+console.log(mypath);    
+var mysteps = mypath.length;    
+console.log(countingValleys(mysteps, mypath))};
+
+/*
+let someAr = [0,2,3,4,5,6];
+console.log(someAr[0]/someAr[0]); */
+</script>
+
+</body>
+</html>
